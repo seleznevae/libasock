@@ -71,12 +71,15 @@ $(LIB_DIR)/$(TARGET): $(OBJCPP_FILES) $(OBJC_FILES)
 	$(CXX) -shared $(LFLAGS) -o $@ $^ $(LIBS)
 
 $(BIN_DIR)/$(TEST_TARGET): $(OBJCPP_FILES) $(TEST_OBJCPP_FILES) $(LIB_DIR)/$(TARGET)
+	mkdir -p $(BIN_DIR)
 	$(CXX)   $(LFLAGS)  -o $@ $^ -L./lib -lasock $(LIBS)
 
 $(BUILD_DIR)/%.cpp.o: %.cpp
+	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) $(INCPATH) -c -o $@ $<
 
 $(BUILD_DIR)/%.c.o: %.c
+	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(INCPATH) -c -o $@ $<
 
 
