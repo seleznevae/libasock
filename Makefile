@@ -11,7 +11,7 @@ CXX           = g++
 DEFINES       =
 OPTIMIZATIONS = #-O0
 CFLAGS        = -pipe -Wall -Wextra -D_REENTRANT -fPIC -MMD $(OPTIMIZATIONS) $(ERROR_CHECKING_POLICY) $(DEFINES) 
-CXXFLAGS      = -pipe  -Wall -Wextra -W -D_REENTRANT -fPIC -MMD $(OPTIMIZATIONS) $(ERROR_CHECKING_POLICY) -std=c++14 $(DEFINES)
+CXXFLAGS      = -pipe  -Wall -Wextra -W -D_REENTRANT -fPIC -MMD $(OPTIMIZATIONS) $(ERROR_CHECKING_POLICY) $(DEFINES)
 INCPATH       = -I./src -I. -I./include
 INSTALL_DIR   = cp -f -R
 DEL_FILE      = rm -f
