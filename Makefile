@@ -52,7 +52,7 @@ VPATH =  $(sort $(dir $(CPP_FILES) $(C_FILES) $(TEST_CPP_FILES))) # get dir-name
 
 ####### Actions
 
-.PHONY: clean checkdirs test
+.PHONY: clean checkdirs test examples
 
 all: CXXFLAGS +=  -g #(temporary) for development purposes
 all:  $(LIB_DIR)/$(TARGET)
@@ -81,6 +81,11 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(INCPATH) -c -o $@ $<
+
+examples: example/server.c
+	mkdir -p bin
+	$(CC) $(CFLAGS)  $(INCPATH) example/server.c -o bin/server -L./lib -lasock
+	$(CC) $(CFLAGS)  $(INCPATH) example/client.c -o bin/client -L./lib -lasock
 
 
 clean:
