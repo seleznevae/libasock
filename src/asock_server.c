@@ -316,7 +316,7 @@ AsockReturnCode asock_server_setns(asock_server_t *server, const char* net_ns)
 }
 
 
-AsockReturnCode asock_server_start (asock_server_t *server)
+AsockReturnCode asock_server_listen(asock_server_t *server)
 {
     if (server == NULL)
         return ASOCK_ERR_INVAL;
@@ -329,7 +329,7 @@ AsockReturnCode asock_server_start (asock_server_t *server)
 }
 
 
-//AsockReturnCode asock_server_start(asock_server_t *server,
+//AsockReturnCode asock_server_listen(asock_server_t *server,
 //                       uint16_t port,
 //                       const char* net_ns)
 //{
@@ -406,7 +406,7 @@ int asock_server_is_running(const asock_server_t *server)
 }
 
 
-asock_t* asock_server_get_incom_connection(asock_server_t *server)
+asock_t* asock_server_accept(asock_server_t *server)
 {
     assert(server);
 

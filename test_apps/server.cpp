@@ -66,7 +66,7 @@ int main(int argc, char **argv)
         return 5;
     }
 
-    int start_status = asock_server_start(server);
+    int start_status = asock_server_listen(server);
     if (start_status != ASOCK_SUCCESS) {
         asock_server_destroy(server);
         asock_deinit();
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 
     asock_t *incom_con = NULL;
     while (true) {
-        incom_con = asock_server_get_incom_connection(server);
+        incom_con = asock_server_accept(server);
         if (incom_con == NULL)
             sleep(1);
         else

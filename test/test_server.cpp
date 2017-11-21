@@ -39,7 +39,7 @@ TEST_CASE( "Test asock_server starting", "[asock_server_basic]" )
             if (bind_status != ASOCK_SUCCESS) {
                 continue;
             }
-            start_status = asock_server_start(server1);
+            start_status = asock_server_listen(server1);
 
         }
         REQUIRE(bind_status == ASOCK_SUCCESS);
@@ -68,7 +68,7 @@ TEST_CASE( "Test asock_server starting", "[asock_server_basic]" )
                 if (bind_status != ASOCK_SUCCESS) {
                     continue;
                 }
-                start_status = asock_server_start(server2);
+                start_status = asock_server_listen(server2);
             }
             REQUIRE(bind_status == ASOCK_SUCCESS);
             REQUIRE(start_status == ASOCK_SUCCESS);
@@ -103,7 +103,7 @@ TEST_CASE( "Test basic connection to server", "[asock_server]" )
             if (bind_status != ASOCK_SUCCESS) {
                 continue;
             }
-            start_status = asock_server_start(server);
+            start_status = asock_server_listen(server);
         }
         REQUIRE(bind_status == ASOCK_SUCCESS);
         REQUIRE(start_status == ASOCK_SUCCESS);
@@ -124,7 +124,7 @@ TEST_CASE( "Test basic connection to server", "[asock_server]" )
 
             asock_t *connection = NULL;
             DO_100_TIMES_WHILE(
-                connection = asock_server_get_incom_connection(server), /* action */
+                connection = asock_server_accept(server), /* action */
                 connection == NULL /* condition */
             );
             REQUIRE(connection != NULL);
@@ -269,7 +269,7 @@ TEST_CASE( "Test reading from closed connection", "[asock_server]" )
             if (bind_status != ASOCK_SUCCESS) {
                 continue;
             }
-            start_status = asock_server_start(server);
+            start_status = asock_server_listen(server);
         }
         REQUIRE(bind_status == ASOCK_SUCCESS);
         REQUIRE(start_status == ASOCK_SUCCESS);
@@ -292,7 +292,7 @@ TEST_CASE( "Test reading from closed connection", "[asock_server]" )
 
             asock_t *connection = NULL;
             DO_100_TIMES_WHILE(
-                connection = asock_server_get_incom_connection(server), /* action */
+                connection = asock_server_accept(server), /* action */
                 connection == NULL /* condition */
             );
             REQUIRE(connection != NULL);

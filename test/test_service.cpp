@@ -55,7 +55,7 @@ TEST_CASE( "Test basic server and service connection", "[asock_service]" )
             if (bind_status != ASOCK_SUCCESS) {
                 continue;
             }
-            start_status = asock_server_start(server);
+            start_status = asock_server_listen(server);
 
         }
         REQUIRE(bind_status == ASOCK_SUCCESS);
@@ -84,7 +84,7 @@ TEST_CASE( "Test basic server and service connection", "[asock_service]" )
             REQUIRE(asock_state(service_con) == Established);
 
             asock_t *server_con = NULL;
-            while (! (server_con = asock_server_get_incom_connection(server)))
+            while (! (server_con = asock_server_accept(server)))
                 usleep(500);
             REQUIRE(server_con != NULL);
             REQUIRE(asock_state(server_con) == Established);

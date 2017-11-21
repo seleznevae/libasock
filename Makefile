@@ -41,7 +41,7 @@ TEST_TARGET        = test_asock
 
 
 CPP_FILES         = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_DIR)/*/*.cpp)
-C_FILES           = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/*/*.c) ./example/main.c
+C_FILES           = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/*/*.c) #./example/main.c
 TEST_CPP_FILES    = $(wildcard $(TEST_SRC_DIR)/*.cpp) $(wildcard $(TEST_SRC_DIR)/*/*.cpp)
 
 OBJCPP_FILES      = $(addprefix $(BUILD_DIR)/,$(notdir $(CPP_FILES:.cpp=.cpp.o)))

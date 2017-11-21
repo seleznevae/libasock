@@ -121,11 +121,11 @@ void            asock_server_destroy(asock_server_t*);
 
 AsockReturnCode asock_server_bind(asock_server_t *server, const struct sockaddr *addr, socklen_t addrlen);
 
-AsockReturnCode asock_server_start(asock_server_t *server);
+AsockReturnCode asock_server_listen(asock_server_t *server);
 void  asock_server_stop (asock_server_t *server);
 int   asock_server_is_running(const asock_server_t *server);
 
-asock_t* asock_server_get_incom_connection(asock_server_t *server);
+asock_t* asock_server_accept(asock_server_t *server);
 
 
 
