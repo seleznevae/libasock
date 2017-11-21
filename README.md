@@ -51,6 +51,7 @@ int main()
 
 ```
 /* Server example */
+/* Server example */
 #include "asock.h"
 
 #include <string.h>
@@ -71,11 +72,11 @@ int main()
     sa.sin_port = htons(8888);
     asock_server_bind(server, (struct sockaddr*)&sa, sizeof(struct sockaddr));
 
-    asock_server_start(server);
+    asock_server_listen(server);
 
     asock_t *connection = NULL;
     while (1) {
-        connection = asock_server_get_incom_connection(server);
+        connection = asock_server_accept(server);
         if (connection == NULL)
             sleep(1);
         else
